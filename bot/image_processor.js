@@ -34,7 +34,7 @@ function llmObj(FILE_URI, datatype, config = true) {
     model: model,
     contents: [
       {
-            text: `
+        text: `
 Carefully examine the entire image.
 The image may contain one or more of the following:
 
@@ -59,14 +59,14 @@ If the text looks like a creative work title, classify accordingly.
 
 For each item, estimate a confidence score between 0 and 1 for your classification.
           `,
-          },
-          {
-            inlineData: {
-              mimeType: datatype,
-              data: FILE_URI,
-            },
-          },
-        ],
+      },
+      {
+        inlineData: {
+          mimeType: datatype,
+          data: FILE_URI,
+        },
+      },
+    ],
   };
 
   if (config) {
@@ -124,46 +124,45 @@ async function main() {
 
     const results = [];
     for (let i = 0; i < uris.length; i++) {
-  try {
-    logger.info(
-      `Processing image ${i + 1}/${uris.length}: ${uris[i].originalPath}`
-    );
-    logger.info(`Data Type of Image is ${uris[i].datatype}`);
+      try {
+        logger.info(
+          `Processing image ${i + 1}/${uris.length}: ${uris[i].originalPath}`
+        );
+        logger.info(`Data Type of Image is ${uris[i].datatype}`);
 
-    let geminiObj = llmObj(uris[i].filedata, uris[i].datatype);
+        let geminiObj = llmObj(uris[i].filedata, uris[i].datatype);
 
-    let ai_response = await gemini_call(geminiObj);
-    logger.info("Raw AI Response:", ai_response);
-    
-    const safeResponse = ai_response
-      ? JSON.parse(JSON.stringify(ai_response))
-      : null;
+        let ai_response = await gemini_call(geminiObj);
+        logger.info("Raw AI Response:", ai_response);
 
-    results.push({
-      imagePath: uris[i].originalPath,
-      status: "success",
-      response: safeResponse,
-    });
+        const safeResponse = ai_response
+          ? JSON.parse(JSON.stringify(ai_response))
+          : null;
 
-    logger.info(`Successfully processed image ${i + 1}/${uris.length}`);
+        results.push({
+          imagePath: uris[i].originalPath,
+          status: "success",
+          response: safeResponse,
+        });
 
-    if (i < uris.length - 1) {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+        logger.info(`Successfully processed image ${i + 1}/${uris.length}`);
+
+        if (i < uris.length - 1) {
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      } catch (error) {
+        logger.error(
+          `Failed to process image ${uris[i].originalPath} with Gemini API: ${error.message}`
+        );
+
+        results.push({
+          imagePath: uris[i].originalPath,
+          status: "failed",
+          response: null,
+          error: error.message,
+        });
+      }
     }
-  } catch (error) {
-    logger.error(
-      `Failed to process image ${uris[i].originalPath} with Gemini API: ${error.message}`
-    );
-
-    results.push({
-      imagePath: uris[i].originalPath,
-      status: "failed",
-      response: null,
-      error: error.message,
-    });
-  }
-}
-
 
     logger.info(JSON.stringify(results));
 
@@ -172,11 +171,30 @@ async function main() {
       logger.info("Successfully saved all AI results");
     });
 
-    return results;
+    // Formating the  data in specifc format
+    let finaldata = specifcFormat(results);
+    return finaldata;
   } catch (error) {
     logger.error("An error occurred in Node", error);
     throw error;
   }
+}
+
+function specifcFormat(data) {
+  let newdata = [];
+  data.forEach((obj) => {
+    obj.response.forEach((res) => {
+      newdata.push({
+        Filename: obj.imagePath,
+        Status: obj.status,
+        Txt: res.text,
+        Type: res.type,
+        Confidence: res.confidence,
+      });
+    });
+  });
+
+  return newdata;
 }
 
 main();
