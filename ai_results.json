@@ -1,0 +1,150 @@
+[
+  {
+    "imagePath": "images/Screenshot_20250802-211807.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Gia",
+        "type": "Movie",
+        "confidence": 0.95
+      },
+      {
+        "text": "You're enough, just as you are",
+        "type": "Joke",
+        "confidence": 0.7
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250802-211846.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Oh, not to see your\nbest friend though.",
+        "type": "Joke",
+        "confidence": 0.85
+      },
+      {
+        "text": "Wild Cards",
+        "type": "Series",
+        "confidence": 0.95
+      },
+      {
+        "text": "Catch Me if You Con",
+        "type": "Series",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250802-212101.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Before we go 2014?",
+        "type": "Movie",
+        "confidence": 0.75
+      },
+      {
+        "text": "Real talk 100",
+        "type": "Joke",
+        "confidence": 0.6
+      },
+      {
+        "text": "before we go",
+        "type": "Movie",
+        "confidence": 0.6
+      },
+      {
+        "text": "I take it you've not watched a lot of movies",
+        "type": "Joke",
+        "confidence": 0.5
+      },
+      {
+        "text": "this movie was so underrated, one of the best films i've ever seen",
+        "type": "Joke",
+        "confidence": 0.5
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250804-140542.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "shwetabasuprasad",
+        "type": "Unknown",
+        "confidence": 0.5
+      },
+      {
+        "text": "Some studies question whether or not the placebo effect actually works",
+        "type": "Unknown",
+        "confidence": 0.6
+      },
+      {
+        "text": "the placebo effect might be like this",
+        "type": "Joke",
+        "confidence": 0.7
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250807-203028.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Lovely Bones",
+        "type": "Book",
+        "confidence": 0.95
+      },
+      {
+        "text": "The Lovely Bones (2009)",
+        "type": "Movie",
+        "confidence": 0.98
+      },
+      {
+        "text": "The book is incredible! However, what is truly painful is the author's next book, which was horrifically bad (and not in a good way)...",
+        "type": "Joke",
+        "confidence": 0.6
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250807-221314.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Jojos mum dies",
+        "type": "Joke",
+        "confidence": 0.75
+      },
+      {
+        "text": "\"Jojo Rabbit\"",
+        "type": "Movie",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250810-001131.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Star-Embracing Swordmaster",
+        "type": "Manhwa",
+        "confidence": 0.95
+      }
+    ]
+  },
+  {
+    "imagePath": "images/Screenshot_20250810-020228.png",
+    "status": "success",
+    "response": [
+      {
+        "text": "Heartbeat conquest",
+        "type": "Manhwa",
+        "confidence": 0.95
+      }
+    ]
+  }
+]
